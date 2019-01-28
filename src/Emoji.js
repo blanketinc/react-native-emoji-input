@@ -56,7 +56,7 @@ class Emoji extends React.PureComponent {
 
       imageComponent = (
         <Image style={imageStyle} source={emojiImageFile} />
-    );
+      );
     } else {
       if (!data.char) {
         data.char = data.unified.replace(/(^|-)([a-z0-9]+)/gi, (s, b, cp) =>
@@ -67,37 +67,37 @@ class Emoji extends React.PureComponent {
 
     const emojiComponent = (
       <View style={StyleSheet.flatten([styles.emojiWrapper, style])}>
-      {native ? (
+        {native ? (
           <Text
-          style={StyleSheet.flatten([
-                styles.labelStyle,
-                labelStyle,
-                {
-                  fontSize: this.props.size
-                }
-              ])}
-            >
+            style={StyleSheet.flatten([
+              styles.labelStyle,
+              labelStyle,
+              {
+                fontSize: this.props.size
+              }
+            ])}
+          >
             {data.char}
-            </Text>
-  ) : (
-      imageComponent
-    )}
-  </View>
-  );
+          </Text>
+        ) : (
+          imageComponent
+        )}
+      </View>
+    );
 
     return onPress || onLongPress ? (
       <TouchableOpacity
-      style={styles.emojiWrapper}
-    onPress={evt => {
-      onPress && onPress(data, evt);
-    }}
-    onLongPress={evt => {
-      onLongPress && onLongPress(data, evt);
-    }}
-  >
-    {emojiComponent}
-  </TouchableOpacity>
-  ) : (
+        style={styles.emojiWrapper}
+        onPress={evt => {
+          onPress && onPress(data, evt);
+        }}
+        onLongPress={evt => {
+          onLongPress && onLongPress(data, evt);
+        }}
+      >
+        {emojiComponent}
+      </TouchableOpacity>
+    ) : (
       emojiComponent
     );
   }
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     flex: 1,
-    marginTop: -45,
+    // marginTop: -45,
     marginLeft: 2.5,
   },
   labelStyle: {

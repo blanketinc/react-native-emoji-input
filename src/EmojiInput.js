@@ -41,24 +41,24 @@ var search = new Wade(emojiArray); // "list" is the item array
 
 const categoryIcon = {
   fue: props => <Icon name="clock" type="material-community" {...props} />,
-people: props => <Icon name="face" {...props} />,
-animals_and_nature: props => (
-  <Icon name="trees" type="foundation" {...props} />
-),
-food_and_drink: props => (
-  <Icon name="food" type="material-community" {...props} />
-),
-activity: props => (
-  <Icon name="football" type="material-community" {...props} />
-),
-travel_and_places: props => (
-  <Icon name="plane" type="font-awesome" {...props} />
-),
-objects: props => (
-  <Icon name="lightbulb" type="material-community" {...props} />
-),
-symbols: props => <Icon name="heart" type="foundation" {...props} />,
-flags: props => <Icon name="flag" {...props} />,
+  people: props => <Icon name="face" {...props} />,
+  animals_and_nature: props => (
+    <Icon name="trees" type="foundation" {...props} />
+  ),
+  food_and_drink: props => (
+    <Icon name="food" type="material-community" {...props} />
+  ),
+  activity: props => (
+    <Icon name="football" type="material-community" {...props} />
+  ),
+  travel_and_places: props => (
+    <Icon name="plane" type="font-awesome" {...props} />
+  ),
+  objects: props => (
+    <Icon name="lightbulb" type="material-community" {...props} />
+  ),
+  symbols: props => <Icon name="heart" type="foundation" {...props} />,
+  flags: props => <Icon name="flag" {...props} />,
 };
 
 const { width } = Dimensions.get('window');
@@ -383,12 +383,12 @@ class EmojiInput extends React.PureComponent {
       case ViewTypes.EMOJI:
         return (
           <Emoji
-        onPress={this.handleEmojiPress}
-        onLongPress={this.handleEmojiLongPress}
-        data={data}
-        size={this.props.emojiFontSize}
-        />
-      );
+            onPress={this.handleEmojiPress}
+            onLongPress={this.handleEmojiLongPress}
+            data={data}
+            size={this.props.emojiFontSize}
+          />
+        );
     }
   }
 
@@ -434,187 +434,187 @@ class EmojiInput extends React.PureComponent {
     const { enableSearch } = this.props;
     return (
       <View
-    style={{
-      height: 226,
-        width: '100%',
-        backgroundColor: this.props.keyboardBackgroundColor,
-        position: 'relative',
-    }}
-  >
-    {!this.state.searchQuery &&
-    this.props.showCategoryTab && (
-    <TouchableWithoutFeedback>
-    <View style={styles.footerContainer}>
-      {_
-        .drop(
-          category,
-          this.props.enableFrequentlyUsedEmoji
-            ? 0
-            : 1
-        )
-          .map(({ key }) => (
-            <TouchableOpacity
-        key={key}
-        onPress={() =>
-      this.handleCategoryPress(key)
-    }
-      style={styles.categoryIconContainer}
-        >
-        <View>
-        {categoryIcon[key]({
-            color:
-              key ===
-              this.state
-                .currentCategoryKey
-                ? this.props
-                  .categoryHighlightColor
-                : this.props
-                  .categoryUnhighlightedColor,
-            size: this.props
-              .categoryFontSize
-          })}
-        </View>
-        </TouchableOpacity>
-    ))}
-    </View>
-    </TouchableWithoutFeedback>
-    )}
-    {enableSearch && (
-    <TextInput
-      ref={input => {
-      this.textInput = input;
-    }}
-      placeholderTextColor={'#A0A0A2'}
-      style={{
-      backgroundColor: 'white',
-        borderColor: '#A0A0A2',
-        borderWidth: 0.5,
-        color: 'black',
-        fontSize: responsiveFontSize(2),
-        padding: responsiveHeight(1),
-        paddingLeft: 15,
-        borderRadius: 15,
-        marginLeft: responsiveWidth(4),
-        marginRight: responsiveWidth(4),
-        marginTop: responsiveHeight(1),
-        marginBottom: responsiveHeight(0.25)
-    }}
-      returnKeyType={'search'}
-      clearButtonMode={'always'}
-      placeholder={'Search emoji'}
-      autoCorrect={false}
-      onChangeText={text => {
-      this.setState({
-        searchQuery: text
-      });
-      if (text.length) {
-        if (
-          text.length >
-          this.state.previousLongestQuery.length
-        ) {
-          this.setState({
-            previousLongestQuery: text
-          });
-        }
-      } else {
-        if (this.loggingFunction) {
-          if (this.verboseLoggingFunction) {
-            this.loggingFunction(
-              this.state.previousLongestQuery,
-              'previousLongestQuery'
-            );
-          } else {
-            this.loggingFunction(
-              this.state.previousLongestQuery
-            );
-          }
-        }
-        this.setState({
-          previousLongestQuery: ''
-        });
-      }
-    }}
-      />
-    )}
-    {this.state.emptySearchResult && (
-    <View style={styles.emptySearchResultContainer}>
-      <Text>No search results.</Text>
-    </View>
-    )}
-  <RecyclerListView
-    style={{ flex: 1 }}
-    renderAheadOffset={1500}
-    layoutProvider={this._layoutProvider}
-    dataProvider={this.state.dataProvider}
-    rowRenderer={this._rowRenderer}
-    ref={component => (this._recyclerListView = component)}
-    onScroll={this.handleScroll}
-    showsVerticalScrollIndicator={false}
-    />
-    {selectedEmoji && (
-    <Animatable.View
-      animation="bounceIn"
-      style={[
-          styles.skinSelectorContainer,
-      {
-        top:
-          selectedEmoji.y -
-          offsetY -
-          width / this.props.numColumns +
-          (enableSearch ? 35 : 0)
-      }
-    ]}
-    >
-    <View
-      style={[
-          styles.skinSelector,
-      {
-        height: this.props.emojiFontSize + 20
-      }
-    ]}
-    >
-      {_(_.get(selectedEmoji, ['lib', 'skin_variations']))
-        .map(data => {
-          return (
-            <View
-          style={styles.skinEmoji}
-          key={data.unified}
-            >
-            <Emoji
-          onPress={this.handleEmojiPress}
-          data={{
-          ...data,
-              derivedFrom: selectedEmoji
-          }}
-          size={this.props.emojiFontSize}
+        style={{
+          height: 226,
+          width: '100%',
+          backgroundColor: this.props.keyboardBackgroundColor,
+          position: 'relative',
+        }}
+      >
+        {!this.state.searchQuery &&
+        this.props.showCategoryTab && (
+          <TouchableWithoutFeedback>
+            <View style={styles.footerContainer}>
+              {_
+                .drop(
+                  category,
+                  this.props.enableFrequentlyUsedEmoji
+                    ? 0
+                    : 1
+                )
+                .map(({ key }) => (
+                  <TouchableOpacity
+                    key={key}
+                    onPress={() =>
+                      this.handleCategoryPress(key)
+                    }
+                    style={styles.categoryIconContainer}
+                  >
+                    <View>
+                      {categoryIcon[key]({
+                        color:
+                          key ===
+                          this.state
+                            .currentCategoryKey
+                            ? this.props
+                              .categoryHighlightColor
+                            : this.props
+                              .categoryUnhighlightedColor,
+                        size: this.props
+                          .categoryFontSize
+                      })}
+                    </View>
+                  </TouchableOpacity>
+                ))}
+            </View>
+          </TouchableWithoutFeedback>
+        )}
+        {enableSearch && (
+          <TextInput
+            ref={input => {
+              this.textInput = input;
+            }}
+            placeholderTextColor={'#A0A0A2'}
+            style={{
+              backgroundColor: 'white',
+              borderColor: '#A0A0A2',
+              borderWidth: 0.5,
+              color: 'black',
+              fontSize: responsiveFontSize(2),
+              padding: responsiveHeight(1),
+              paddingLeft: 15,
+              borderRadius: 15,
+              marginLeft: responsiveWidth(4),
+              marginRight: responsiveWidth(4),
+              marginTop: responsiveHeight(1),
+              marginBottom: responsiveHeight(0.25)
+            }}
+            returnKeyType={'search'}
+            clearButtonMode={'always'}
+            placeholder={'Search emoji'}
+            autoCorrect={false}
+            onChangeText={text => {
+              this.setState({
+                searchQuery: text
+              });
+              if (text.length) {
+                if (
+                  text.length >
+                  this.state.previousLongestQuery.length
+                ) {
+                  this.setState({
+                    previousLongestQuery: text
+                  });
+                }
+              } else {
+                if (this.loggingFunction) {
+                  if (this.verboseLoggingFunction) {
+                    this.loggingFunction(
+                      this.state.previousLongestQuery,
+                      'previousLongestQuery'
+                    );
+                  } else {
+                    this.loggingFunction(
+                      this.state.previousLongestQuery
+                    );
+                  }
+                }
+                this.setState({
+                  previousLongestQuery: ''
+                });
+              }
+            }}
           />
+        )}
+        {this.state.emptySearchResult && (
+          <View style={styles.emptySearchResultContainer}>
+            <Text>No search results.</Text>
           </View>
-        );
-        })
-        .value()}
-    </View>
-    <View
-      style={[
-          styles.skinSelectorTriangleContainer,
-      {
-        marginLeft:
-          selectedEmoji.x +
-          width / this.props.numColumns / 2 -
-          30 / 2
-      }
-    ]}
-    >
-    <Triangle
-      width={30}
-      height={20}
-      color={'#fff'}
-      direction={'down'}
-      />
+        )}
+        <RecyclerListView
+          style={{ flex: 1 }}
+          renderAheadOffset={1500}
+          layoutProvider={this._layoutProvider}
+          dataProvider={this.state.dataProvider}
+          rowRenderer={this._rowRenderer}
+          ref={component => (this._recyclerListView = component)}
+          onScroll={this.handleScroll}
+          showsVerticalScrollIndicator={false}
+        />
+        {selectedEmoji && (
+          <Animatable.View
+            animation="bounceIn"
+            style={[
+              styles.skinSelectorContainer,
+              {
+                top:
+                  selectedEmoji.y -
+                  offsetY -
+                  width / this.props.numColumns +
+                  (enableSearch ? 35 : 0)
+              }
+            ]}
+          >
+            <View
+              style={[
+                styles.skinSelector,
+                {
+                  height: this.props.emojiFontSize + 20
+                }
+              ]}
+            >
+              {_(_.get(selectedEmoji, ['lib', 'skin_variations']))
+                .map(data => {
+                  return (
+                    <View
+                      style={styles.skinEmoji}
+                      key={data.unified}
+                    >
+                      <Emoji
+                        onPress={this.handleEmojiPress}
+                        data={{
+                          ...data,
+                          derivedFrom: selectedEmoji
+                        }}
+                        size={this.props.emojiFontSize}
+                      />
+                    </View>
+                  );
+                })
+                .value()}
+            </View>
+            <View
+              style={[
+                styles.skinSelectorTriangleContainer,
+                {
+                  marginLeft:
+                    selectedEmoji.x +
+                    width / this.props.numColumns / 2 -
+                    30 / 2
+                }
+              ]}
+            >
+              <Triangle
+                width={30}
+                height={20}
+                color={'#fff'}
+                direction={'down'}
+              />
+            </View>
+          </Animatable.View>
+        )}
       </View>
-      </Animatable.View>
-    )}
-  </View>
-  );
+    );
   }
 }
 
@@ -632,7 +632,7 @@ EmojiInput.defaultProps = {
   numFrequentlyUsedEmoji: 18,
   defaultFrequentlyUsedEmoji: [],
 
-  categoryLabelHeight: 45,
+  categoryLabelHeight: 5,
   categoryLabelTextStyle: {
     fontSize: 25
   },
@@ -674,7 +674,7 @@ const styles = {
     width: '100%',
     height: 40,
     backgroundColor: '#fff',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   emptySearchResultContainer: {
     flex: 1,
