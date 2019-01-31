@@ -393,6 +393,9 @@ class EmojiInput extends React.PureComponent {
   }
 
   handleCategoryPress = key => {
+    this.setState({
+      currentCategoryKey: key,
+    });
     this._recyclerListView.scrollToOffset(
       0,
       category[categoryIndexMap[key].idx].y + 1,
@@ -404,7 +407,6 @@ class EmojiInput extends React.PureComponent {
     let idx = _(category).findLastIndex(c => c.y < offsetY);
     if (idx < 0) idx = 0;
     this.setState({
-      currentCategoryKey: category[idx].key,
       selectedEmoji: null,
       offsetY
     });
